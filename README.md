@@ -29,8 +29,8 @@ index.js: Backend Node.js server for handling API requests and interacting with 
 example :
 [
   {
-    "name": "Example University",
-    "state_province": "Example State",
-    "web_page": "https://example.com"
+    "name": "Middle East Technical University",
+    "state_province": "null",
+    "web_page": "metu.edu.tr"
   }
 ]
