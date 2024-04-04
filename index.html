@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home-Universities</title>
+</head>
+<body>
+      <h1>Hello, Welcome to the website, please search for the various universites.</h1>
+      <form id="searchForm">
+        <label for="university" id ="uni">Enter a university name</label>
+        <input type="text" id ="university" placeholder="enter a name" name ="university">
+        <button type="submit" id = "sendButton">Submit</button>
+      </form>
+     
+       <table id="resultsBody">
+          <thead> 
+            <tr>
+                Name
+            </tr>
+            <tr>
+                state-province
+            </tr>
+            <tr>
+                web_pages
+            </tr>
+          </thead>
+          <tbody>
+            <!-- the data fetched will be appended here.-->
+          </tbody>
+       </table>
+       <script>
+        document.getElementById('searchForm').addEventListener('submit', async function(event) {
+    event.preventDefault();
+            const searchInput = document.getElementById('university').value;
+            const response = await fetch(`https://universities.hipolabs.com/search?country=India&name=${searchInput}`);
+            const universities = await response.json();
+            const resultsBody = document.getElementById('resultsBody');
+    resultsBody.innerHTML = '';
+    universities.forEach(university => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${university.name}</td>
+            <td>${university.state_province}</td>
+            <td><a href="${university.web_pages[0]}" target="_blank">${university.web_pages[0]}</a></td>
+            <td><button onclick="addToFavorites('${university.name}', '${university.state_province}', '${university.web_pages[0]}')">Add to Favorites</button></td>
+        `;
+        resultsBody.appendChild(row);
+    });
+});
+       </script>
+</body>
+</html>
