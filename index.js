@@ -48,7 +48,7 @@ favRoutes.post('/favourites', (req,res)=>{
       })
 })
 
- async function addToFavorites(name, stateProvince, webPage){
+  function addToFavorites(name, stateProvince, webPage){
       fetch('/favourites',{
         method : "POST",
         headers : {
