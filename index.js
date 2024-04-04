@@ -36,7 +36,7 @@ favRoutes.post('/favourites', (req,res)=>{
      
       const { name, stateProvince, webPage } = req.body
      
-      const query = `INSERT INTO favourites (name, stateProvince, wwebPage), VALUES(?,?,?)`;
+      const query = `INSERT INTO favourites (name, stateProvince, webPage), VALUES(?,?,?)`;
 
       connection.query(query, [name, stateProvince, webPage], (err, result)=>{
         if(err){
