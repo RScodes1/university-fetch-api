@@ -3,6 +3,10 @@
 ## SQL DATABASE INTEGRATION with FRONTEND WEB LAYOUT to assist you while searching for universities.
 
 ## clone the repository using git clone and run the server using npm run server/
+git clone https://github.com/your-username/your-repository.git
+npm install
+npm run server
+
 
 API Endpoints
 GET /favourites: Retrieve a list of favorite universities.
