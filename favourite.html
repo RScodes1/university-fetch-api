@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Favorite Universities</h1>
+    <p id="message">University added to favorites!</p>
+    <p><a href="/">Back to Search</a></p>
+
+</body>
+   <script src="index.js"></script>
+   <script>
+    fetch('/favorites')
+    .then(response => response.json())
+    .then(data => {
+        const favoritesBody = document.getElementById('favoritesBody');
+        data.forEach(university => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${university.name}</td>
+                <td>${university.state_province}</td>
+                <td><a href="${university.web_page}" target="_blank">${university.web_page}</a></td>
+            `;
+            favoritesBody.appendChild(row);
+        });
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+</script>
+
+</html>
